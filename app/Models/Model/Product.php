@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    /** @use HasFactory<\Database\Factories\Model\ProductFactory> */
+
     use HasFactory;
+    // protected $fillable = ['name', 'detail', 'price', 'stock', 'discount'];
+    protected $guarded = []; // Allows all fields to be mass assignable (for dev/testing)
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
